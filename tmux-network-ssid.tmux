@@ -4,16 +4,22 @@ CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source "$CURRENT_DIR/scripts/helpers.sh"
 
 net_ssid="#($CURRENT_DIR/scripts/get_ssid.sh)"
+global_ip="#($CURRENT_DIR/scripts/get_global_ip.sh)"
+private_ip="#($CURRENT_DIR/scripts/get_private_ip.sh)"
 
 ssid_interpolation="\#{wlan_ssid}"
+global_ip_interpolation="\#{global_ip}"
+private_ip_interpolation="\#{private_ip}"
 
 do_interpolation() {
-  local input=$1
-    local result=""
+  local option=$1
+  local value=""
 
-  result=${input/$ssid_interpolation/$net_ssid}}
+  value=${option/$ssid_interpolation/$wlan_ssid}
+  value=${value/$global_ip_interpolation/$global_ip}
+  value=${value/$private_ip_interpolation/$private_ip}
 
-  echo $result
+  echo $value
 }
 
 update_tmux_option() {
