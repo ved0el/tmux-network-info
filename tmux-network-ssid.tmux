@@ -3,7 +3,7 @@
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source "$CURRENT_DIR/scripts/helpers.sh"
 
-net_ssid="#($CURRENT_DIR/scripts/get_ssid.sh)"
+wlan_ssid="#($CURRENT_DIR/scripts/get_ssid.sh)"
 global_ip="#($CURRENT_DIR/scripts/get_global_ip.sh)"
 private_ip="#($CURRENT_DIR/scripts/get_private_ip.sh)"
 
